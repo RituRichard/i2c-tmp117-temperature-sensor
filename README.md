@@ -26,10 +26,6 @@ This project demonstrates register-level I2C peripheral configuration, datasheet
 *Silicon Labs Wireless Gecko MCU (left) connected to INNIRION custom PCB (centre) with Saleae Logic Analyser (right) probing the I2C bus*
 *Full test bench powered up — JTAG connected, Logic Analyser probes on I2C test points*
 
-<img src="images/setup_bringup.JPG" width="400">
-
-*Hardware bring-up session: bench power supply, Wireless Gecko, INNIRION baseboard with ADC companion board. Green LEDs confirm successful power-on.*
-
 ---
  
 ## What it does
