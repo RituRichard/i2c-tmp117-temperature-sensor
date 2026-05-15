@@ -21,13 +21,13 @@ This project demonstrates register-level I2C peripheral configuration, datasheet
  
 ## Lab Setup
  
-![Setup overview](images/IMG_4173.JPG)
+![Setup overview](images/setup_overview.jpg)
 *Silicon Labs Wireless Gecko MCU (left) connected to INNIRION custom PCB (centre) with Saleae Logic Analyser (right) probing the I2C bus*
  
-![Setup powered](images/IMG_4174.JPG)
+![Setup powered](images/setup_powered.jpg)
 *Full test bench powered up — JTAG connected, Logic Analyser probes on I2C test points*
  
-![ADC bring-up](images/IMG_4176.JPG)
+![Hardware bring-up](images/setup_bringup.jpg)
 *Hardware bring-up session: bench power supply, Wireless Gecko, INNIRION baseboard with ADC companion board. Green LEDs confirm successful power-on.*
  
 ---
@@ -88,19 +88,19 @@ The TMP117 requires a **write** of the register pointer address followed by a **
 ### Logic Analyser — Configuration Write
 Captured on Saleae Logic: `Setup Write to [0x48] + ACK` → `0xAB + ACK`
  
-![Config Write](images/LA-Configdata.png)
+![Config Write](images/la_config_write.png)
  
 SCL frequency: **~38 kHz**, duty cycle: **29%**
  
 ### Logic Analyser — Device ID Read
 Write pointer `0x0F`, repeated START, read 2 bytes → `0x01 0x17` = **Device ID 0x0117** ✓
  
-![Device ID Read](images/LA-Device_ID.png)
+![Device ID Read](images/la_device_id_read.png)
  
 ### Logic Analyser — Temperature Read
 Write pointer `0x00`, repeated START, read 2 bytes → raw temperature data
  
-![Temperature Read](images/LA-Temp.png)
+![Temperature Read](images/la_temperature_read.png)
  
 ### Debugger — Verified Values
  
@@ -110,13 +110,17 @@ Write pointer `0x00`, repeated START, read 2 bytes → raw temperature data
 | `lastWrittenConfig` | `0xAB` (171) | Config register write confirmed |
 | `currentTemperature` | `23.671875` | 23.67°C room temperature |
  
+![Debug Temperature](images/debug_temperature.png)
+![Debug Device ID](images/debug_device_id.png)
+![Debug Config](images/debug_config.png)
+ 
 ---
  
 ## Schematic
  
 I2C bus with TMP117 (address `0x48`, ADD0 → GND) and M24128X EEPROM (address `0xA0`), 10kΩ pull-up on SDA, pull-up on ALERT pin.
  
-![Schematic](images/Pin_configuration.png)
+![Schematic](images/schematic.png)
  
 ---
  
